@@ -1,0 +1,350 @@
+a:link {
+    text-decoration: none;
+    color:#0C95C9
+}
+
+a:visited {
+    color:#0C95C9
+}
+
+textarea {
+    resize : none;
+}
+
+
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"]:checked + label {
+  border-color: orange;
+}
+input[type="radio"]:checked + label::after {
+  transform: scale(0.7);
+  background: orange;
+}
+
+input[type="radio"] + label {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: 5px solid #7A7A7A;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
+}
+input[type="radio"] + label::before {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 300%;
+  width: 300%;
+  top: -100%;
+  left: -100%;
+  z-index: -1;
+  border-radius: 50%;
+  transition: .3s;
+}
+input[type="radio"] + label::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #009688;
+  border-radius: 50%;
+  background-size: contain;
+  transform: scale(0);
+  transition: .2s;
+}
+label:active::before {
+/*   background: #bfbfbf; */
+}
+
+
+
+
+
+
+
+
+.group::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.landing-page {
+  width: 882px;
+  margin: 100px auto 0;  
+}
+
+.landing-page *,
+.landing-page *::before,
+.landing-page *::after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box; 
+}
+
+.landing-page .module {
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 4px;
+    float: left;
+    padding: 2em;
+    width: 48%;
+}
+
+.landing-page .module > *:last-child,
+.landing-page .module > *:last-child > *:last-child,
+.landing-page .module > *:last-child > *:last-child > *:last-child {
+    margin: 0;
+    padding: 0;
+}
+
+.landing-page .note {   
+    background-color: rgb(236, 248, 236);
+    border: 1px dashed; 
+    border-radius: 4px; 
+    color: rgb(115, 136, 96);
+    font-family: georgia;   
+    font-size: .9em;
+    font-style: italic;
+    margin: 20px auto;
+    padding: 2em;
+}
+
+.form-appointment {
+    padding: 2em;
+    background-color: rgb(239, 252, 239);
+    border-radius: 4px;
+    border: 1px solid rgb(130, 228, 130);
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    font-family: 'PT Sans', Arial, sans-serif;
+    margin: 20px auto;
+}
+
+.form-appointment input[type=text],
+.form-appointment input[type=email],
+.form-appointment input[type=tel],
+.form-appointment textarea {    
+    border: 1px solid rgb(153, 202, 129);
+    border-radius: .2em;    
+    font-family: 'PT Sans', Arial, sans-serif;
+    font-size: 1.1em;
+    padding: .4em 1em;
+    margin: 0 0 .8em;
+    width: 100%;
+  box-shadow: 0 0 8px rgba(0,0,0,.08) inset;
+}
+
+.form-appointment input[type=text],
+.form-appointment input[type=email],
+.form-appointment input[type=tel],
+.form-appointment input[type=submit],
+.form-appointment textarea {    
+    -webkit-transition: all .2s ease-in-out;
+       -moz-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+}
+
+.form-appointment input[type=text]:active,
+.form-appointment input[type=text]:focus,
+.form-appointment input[type=email]:active,
+.form-appointment input[type=email]:focus,
+.form-appointment input[type=tel]:active,
+.form-appointment input[type=tel]:focus,
+.form-appointment textarea:active,
+.form-appointment textarea:focus {  
+  outline: 0;
+  box-shadow: 0 0 6px rgb(176, 226, 188);
+}
+
+.form-appointment textarea {
+    height: 320px;
+}
+
+.form-appointment input[type=submit] {
+    background-color: rgb(118, 207, 118);
+    border: 1px solid rgb(134, 189, 134);
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.4em;
+    padding: 10px 18px;
+}
+
+.form-appointment input[type=submit]:hover {
+    background-color: white;
+    color: rgb(118, 207, 118);
+}
+
+.form-appointment .wpcf7-list-item-label {
+    color: rgb(130, 178, 136);
+}
+
+span.wpcf7-list-item {
+    display: block;
+    margin-left: -.02em;
+}
+
+.red-cross{
+  width: 150px;
+  height: 50px;
+  background-color: #e34a4a;
+  position: relative;
+  top: 10px;
+}
+
+.red-cross:before, .red-cross:after{
+  content: '';
+  width: 50px;
+  height: 50px;
+  background-color: #e34a4a;
+  position: absolute;
+  left: 50px;
+}
+
+.red-cross:before{
+  top: -50px;
+}
+
+.red-cross:after{
+  top: 50px;
+}
+
+
+.pencil {
+	position:relative;
+  width:40px;
+  margin: -200px auto;
+  transform:rotate(90deg);
+  -ms-transform:rotate(90deg); /* IE 9 */ 
+  -webkit-transform:rotate(90deg); /* Safari and Chrome */
+}
+
+.pencil::before {
+  content: "";
+  position: absolute;
+  height:512px;
+  width:8px;
+  background: rgba(0,0,0,.4);
+  border-radius: 50%;
+  margin-left:35px;
+  margin-top:-2px;
+}
+
+.pencil .eraser {
+  height:35px;
+  width:40px;
+  background: #EC87C0;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.pencil .eraser::before {
+  content: "";
+  position: absolute;
+  width:20px;
+  height:35px;
+  margin-left:20px;
+  background: #D770AD;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+}
+
+.pencil .ferrule {
+  height:45px;
+  width:40px;
+  background: #CCD1D9;
+}
+
+.pencil .ferrule::before {
+  content: "";
+  position:absolute;
+  height:45px;
+  width:20px;
+  margin-left:20px;
+  background: #AAB2BD;
+}
+
+.pencil .shaft {
+  height: 350px;
+  width: 40px;
+  background: #FFCE54;
+  position:　relative;
+}
+
+.pencil .shaft::before{
+  content: '';
+  position: absolute;
+  height: 350px;
+  width: 20px;
+  margin-left: 20px;
+  background: #FCBB42;
+}
+
+.pencil .lead {
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 80px solid #EBD4A9;
+}
+
+.pencil .lead::before {
+  content: "";
+  position: absolute;
+  margin-top: -80px;
+  border-right: 20px solid transparent;
+  border-top: 80px solid #D1BD97;
+}
+
+.pencil .lead::after {
+  content: "";
+  position: absolute;
+  margin-top:-21px;
+  margin-left:-5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 20px solid #1A1A1A;
+}
+
+.pencil + h1 {
+	text-align: center;
+	font-weight: bold;
+	width: auto;
+/* 	background-color: lightgray; */
+/* 	background-image: */
+/*      radial-gradient( */
+/*       circle, */
+/*       lightgrey, */
+/*       white */
+/*     ); */
+	margin-bottom: -70px;
+}
+
+.form-appointment h4 {
+    clear: both;	
+}
+
+.select-date a {
+	background-color: rgb(118, 207, 118);
+    border: 1px solid rgb(134, 189, 134);
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.4em;
+    padding: 10px 18px;
+} 
+
+.select-date a:hover {
+	background-color: white;
+    color: rgb(118, 207, 118)
+}

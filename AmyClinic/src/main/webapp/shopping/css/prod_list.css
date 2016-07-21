@@ -1,0 +1,263 @@
+
+@font-face {
+	font-family: 'layout';
+	src:url('../fonts/layout.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'cart';
+	src: url('../fonts/cart.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+li, li::after, li::before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+.main {
+	color: black;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 0 1.875em 3.125em 1.875em;
+	font-size: 1em;
+}
+
+#query-wrapper {
+	font-family: 'myfont';
+	margin-left: 17%;
+	font-size: 22px;
+	letter-spacing: 3px;
+}
+
+/* Main container */
+.cbp-vm-switcher {
+	padding: 30px;
+}
+
+/* options/select wrapper with switch anchors */
+.cbp-vm-options {
+	text-align: right;
+	padding-bottom: 10px;
+	border-bottom: 3px solid #db7093;
+}
+
+.cbp-vm-options a {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #d0d0d0;
+	margin: 2px;
+}
+
+.cbp-vm-options a:hover,
+.cbp-vm-options a.cbp-vm-selected {
+	color: #47a3da;
+}
+
+.cbp-vm-options a::before {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 30px;
+	text-align: center;
+	display: inline-block;
+}
+
+/* General style of switch items' list */
+
+.cbp-vm-switcher ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Clear eventual floats */
+.cbp-vm-switcher ul::before, 
+.cbp-vm-switcher ul::after { 
+	content: " "; 
+	display: table; 
+}
+
+.cbp-vm-switcher ul::after { 
+	clear: both; 
+}
+
+.cbp-vm-switcher ul li {
+	display: block;
+	position: relative;
+}
+
+.cbp-vm-image {
+	display: block;
+	margin: 0 auto;
+}
+
+.cbp-vm-image img {
+	display: inline-block;
+	max-width: 70%;
+	border: none;
+}
+
+.cbp-vm-title {
+	margin: 0;
+	padding: 0;
+}
+
+.cbp-vm-price {
+	color: black;
+}
+
+.cbp-vm-add {
+	color: #fff;
+	background: #47a3da;
+	padding: 10px 20px;
+	border-radius: 2px;
+	margin: 20px 0 0;
+	display: inline-block;
+	transition: background 0.2s;
+	cursor: pointer;
+}
+
+.cbp-vm-add:hover {
+	color: #fff;
+	background: #02639d;
+}
+
+.cbp-vm-add::before {
+	margin-right: 5px;
+}
+
+/* Common icon styles */
+.cbp-vm-icon::before {
+	font-family: 'layout';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.cbp-vm-grid::before {
+	content: "\f00a";
+}
+
+.cbp-vm-list::before {
+	content: "\f00b";
+}
+
+.cbp-vm-add::before {
+	font-family:cart;
+	margin-right: 10px;
+	content: "\e000";
+}
+
+.cbp-vm-view-grid ul li {
+	width: 33%;
+	text-align: center;
+	padding: 25px;
+	margin: 20px 0 0;
+	display: inline-block;
+	min-height: 420px;
+	vertical-align: top;
+}
+
+.cbp-vm-view-grid .cbp-vm-title {
+	font-size: 1.5em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.cbp-vm-view-grid .cbp-vm-details {
+	width: 300px;
+    height: 70px;
+    display: box;
+    text-align: left;
+} 
+.cbp-vm-view-grid .cbp-vm-price {
+	margin: 10px 0;
+	font-size: 1.2em;
+}
+
+
+/* List view */
+.cbp-vm-view-list li {
+	padding: 20px 0;
+	white-space: nowrap;
+	border-bottom:1px dotted black;
+}
+
+.cbp-vm-view-list .cbp-vm-image,
+.cbp-vm-view-list .cbp-vm-title,
+.cbp-vm-view-list .cbp-vm-details,
+.cbp-vm-view-list .cbp-vm-price,
+.cbp-vm-view-list .cbp-vm-add {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.cbp-vm-view-list .cbp-vm-image {
+	width: 10%;
+}
+
+.cbp-vm-view-list .cbp-vm-title {
+	font-size: 1.2em;
+	padding: 0 10px;
+	white-space: normal;
+	width: 23%;
+}
+
+.cbp-vm-view-list .cbp-vm-price {
+	font-size: 1em;
+	width: 10%;
+}
+
+.cbp-vm-view-list .cbp-vm-details {
+	width: 40%;
+	padding: 0 15px;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.cbp-vm-view-list .cbp-vm-add {
+	margin-left: 15px;
+}
+
+#description {
+	font-family: 'myfont';
+	color: black;
+	float: left;
+	font-size: 2em;
+}
+
+.pid {
+	color: #47a3da; 
+}
+
+.pid:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+h1 {
+	color: black;
+	font-weight: bolder;
+}
+
+#Pagination {
+	font-size: 25px;	
+}

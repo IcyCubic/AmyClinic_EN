@@ -1,0 +1,83 @@
+input[type="text"],.form-el, .col-2 {
+  box-sizing: border-box;
+}
+
+.info-wrapper {
+  max-width: 500px;
+  padding: 1em;
+  margin: 0 auto;
+}
+
+.form-el {
+  padding: 5px;
+  display: block;
+}
+
+.form-el.col-2 {
+  width: 50%;
+  float: left;
+}
+
+
+label {
+  display: block;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.input {
+  border: 3px solid black;
+  width: 100%;
+  padding: 7px;
+  font-weight: 700;
+  font-size: 1.1em;
+  transition: linear all 0.2s;
+  text-transform: uppercase;
+}
+
+
+.pay-amount {
+	width: auto;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 2em;
+	font-size: 1.5em;
+}
+
+#submit-wrapper {
+	clear: both;
+	margin: 0 auto;
+	text-align: center; 
+}
+
+#paysubmit {
+  margin-top: 30px;
+  background: #fb0;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: .3em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 10px 10px rgba(255,255,255,0.1);
+  color: #873C00;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  height: 40px;
+  padding: 5px 20px;
+  width: 10%;
+}
+#paysubmit:hover, #paysubmit:focus {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -10px 10px rgba(255,255,255,0.1);
+}
+
+.vcode-wrapper {
+	padding: 10px;
+}
+
+#vcode {
+	 width: 200px; 
+	 height: 50px;
+	 border: 1px solid #ccc; 
+	 margin: 20px auto;
+	 display: block;
+}

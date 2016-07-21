@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="group3.beef.employee.model.EmployeeVO" table="Employees">
+
+		<id name="eid" column="eid">
+			<generator class="identity"/>
+		</id>
+
+		<property name="name" column="name" />
+		<property name="pwd" column="pwd" />
+		<property name="email" column="email" />
+		<property name="photo" column="photo" />
+		<property name="education" column="education" />
+		<property name="experience" column="experience" />
+		<property name="specialty" column="specialty" />
+		
+		<set name="apps" table="Appointments" lazy="false"  order-by="aid asc">			
+			<key>
+				<column name="eid" />
+			</key>
+			<one-to-many class="group3.carrie.app.model.AppVO" />
+		</set>
+		
+	</class>
+</hibernate-mapping>
+

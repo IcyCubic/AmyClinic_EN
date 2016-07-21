@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="tempPW1">
+		<field-validator type="requiredstring">
+			<message key="pwd.required" />
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[^[\u3400-\u9FBF, A-Z, a-z, 0-9, _]{4,}$]]></param>
+			<message key="pwd.invalidpwd" />
+		</field-validator>
+	</field>
+
+	<field name="tempPW2">
+		<field-validator type="requiredstring">
+			<message key="pwd.required" />
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[^[\u3400-\u9FBF, A-Z, a-z, 0-9, _]{4,}$]]></param>
+			<message key="pwd.invalidpwd" />
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[tempPW1 == tempPW2]]></param>
+			<message key="pwd.mismatch" />
+		</field-validator>
+	</field>
+
+</validators>

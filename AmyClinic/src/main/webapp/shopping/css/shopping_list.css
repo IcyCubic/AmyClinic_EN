@@ -1,0 +1,90 @@
+
+.table-wrapper {
+	border: 1px solid gray;
+	border-radius: 20px;
+	overflow: hidden;
+	padding-bottom: 30px;
+	width: 90%;
+	border: 1px solid gray;
+/* 	margin-left: -23%; */
+	margin: 0 auto;
+	margin-top: 5%;
+}
+
+.table-header {
+	background-color: #E7767C;
+	font-size: 1.2em;
+	padding: 3px;
+	text-align: center;
+	color: white;
+	text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+	font-weight: bold;
+}
+
+.order {
+	width: 95%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-top: 30px;
+	margin-bottom: 15px;
+	border-collapse: collapse;
+}
+.order th {
+	background-color: #E2DACD;
+	border: 1px #C9AD88 solid;
+}
+
+.order tr:hover {
+	background-color: whitesmoke;
+}
+
+
+.order th td,
+.order tr td {
+	text-align: center;
+	border: 1px #C9AD88 solid;
+}
+
+.order input[type="text"] {
+	text-align: center;
+}
+
+.summary {
+	border-top: 5px solid pink;
+	margin-top: 0px;
+}
+
+.details {
+	margin-bottom: 0px;
+}
+
+.sortbottom {
+	display:none;
+}
+
+#sidebar-wrapper {
+	width: 140%;
+	margin-left: -25%;
+	padding: 20px;
+}
+
+.btn-wrapper {
+	margin-top: 15%;
+	margin-left: 13%;
+}
+
+#confirm,#continue,#abandon {
+	font-weight: bold;
+	color: 	#000000;
+	outline: none;
+    width:150px;
+    height:50px;
+    cursor: pointer;
+    border-radius: 100px;
+    border: 1px solid transparent;
+	box-shadow:10px 10px 20px 15px pink inset;	
+}
+
+#confirm:hover,#continue:hover,#abandon:hover {
+	background-color: yellow;
+}

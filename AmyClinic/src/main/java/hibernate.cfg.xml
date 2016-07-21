@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+        
+        <!-- 連線池c3p0設定-->
+<!-- 	<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
+<!-- 	<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=AmyDB</property> -->
+		<property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>		
+
+<!-- 		Local Machine  -->
+		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://localhost:1433;DatabaseName=AmyDB</property>
+		<property name="hibernate.connection.username">sa</property>
+		<property name="hibernate.connection.password">01292013@Taichung</property>
+<!-- 		<property name="hibernate.connection.password">P@ssw0rd</property> -->
+<!-- 		Local Machine End -->
+
+<!-- 		Azure Web	 -->
+<!-- 		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://eeit85group3.database.windows.net:1433;DatabaseName=AmyDB</property> -->
+<!-- 		<property name="hibernate.connection.username">amy@eeit85group3</property> -->
+<!-- 		<property name="hibernate.connection.password">P@ssw0rd</property> -->
+
+<!-- 		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://lcsxvpwqoa.database.windows.net:1433;DatabaseName=AmyDB</property> -->
+<!-- 		<property name="hibernate.connection.username">eeit85group3</property> -->
+<!-- 		<property name="hibernate.connection.password">P@ssw0rd</property> -->
+<!-- 		Azure Web End	 -->
+
+		      
+
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.timeout">1800</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.privilegeSpawnedThreads">true</property> 
+		<property name="hibernate.c3p0.contextClassLoaderSource">library</property>
+        
+		<!--SQL方言,以下使用SQLServer -->
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+
+		<!--是否要顯示實際操作資料庫時的SQL -->
+		<property name="hibernate.show_sql">false</property>
+
+        <!-- Disable the second-level cache -->
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+		<!--交易管理類型, 以下使用JDBC Transaction -->
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        
+        <!-- Enable Hibernate's automatic session context management -->
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- 物件與資料庫表格映射文件，mapping屬性改class，值為類別全名 -->
+
+		<mapping class="group3.henry.login.model.MemberVO"/>
+		<mapping class="group3.nick.score.model.ScoreVO"/>
+		<mapping class="group3.carrie.app.model.AppVO"/>
+		<mapping class="group3.carrie.appdetail.model.AppDetailVO"/>
+		<mapping class="group3.carrie.catagory.model.CatagoryVO"/>
+		<mapping class="group3.carrie.product.model.ProductVO"/>
+		<mapping class="group3.carrie.orders.model.OrdersVO"/>
+		<mapping class="group3.carrie.orderitems.model.OrderItemsVO"/>
+		<mapping class="group3.carrie.proctype.model.ProcTypeVO"/>
+		<mapping class="group3.carrie.proc.model.ProcVO"/>
+		<mapping class="group3.carrie.schedule.model.ScheduleVO"/>
+		<mapping class="group3.beef.employee.model.EmployeeVO"/>
+<!-- 		k -->
+		<mapping class="group3.k.chart.model.SpaToSalesVO"/>
+		<mapping class="group3.k.SalesToProd.model.SalesToProdVO"/>
+<!-- 		k -->
+	</session-factory>
+	
+</hibernate-configuration>

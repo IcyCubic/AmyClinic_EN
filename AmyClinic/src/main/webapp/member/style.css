@@ -1,0 +1,36 @@
+.wrapper {
+	border: 1px solid red;
+	width: 90%;
+	height: 400px;
+	margin: 0 auto;
+}
+
+.one-third {
+	display: inline-block;
+	width: 28%;
+	height: 300px;
+	float: left;
+	margin: 2% 0 3% 4%;
+	border: 1px solid black;
+}
+
+.one-third img {
+	padding: 2% 0 6% 0;
+}
+
+.we-need-to-talk {
+	position: absolute;
+	top: 50px;
+	border: 5px solid #ffcc99;
+	background-color: #ffff99;
+	right: 1.2%;
+	z-index: 9999;
+	width: auto;
+	overflow: auto;	
+	border-radius:8px;
+	padding: 3px;
+}
+
+.we-need-to-talk h2.demo0 {
+	writing-mode: vertical-lr;
+}

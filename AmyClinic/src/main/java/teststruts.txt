@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- Specifies url patterns / servlets to exclude from struts2 -->
+	<!-- <constant name="struts.action.excludePattern" value="/YourServlet,/YourOtherServlet"/> -->
+
+	<constant name="struts.action.excludePattern" value="/CarrieTest/login/LoginServlet,/Score/ScoreServlet,/Score/GetPic,/Backstage/[a-zA-Z_0-9]*,/shopping/[a-zA-Z_0-9]*,/app/[a-zA-Z_0-9]*,/schedule/[a-zA-Z_0-9]*,/FacebookLoginServlet,/GoogleLoginServlet,/app_back/[a-zA-Z_0-9]*,/empLogin/[a-zA-Z_0-9]*,/ShowPicByAjax" />
+
+	<!-- specifies the properties file to use for retrieving resources (I18N) -->
+	<constant name="struts.custom.i18n.resources" value="global" />
+	
+	<constant name="struts.devMode" value="true" />
+	<!-- ********************** -->
+	<!-- login package: -->
+	<!-- Intercepts password and encrypts them -->
+	<!-- ********************** -->
+	<package name="loginPackage" namespace="/login" extends="struts-default">
+
+		<interceptors>
+			<interceptor class="group3.henry.encryption.interceptor.AES_EncryptionInterceptor" name="AESEncryption" />
+			<interceptor class="group3.henry.encryption.interceptor.MD5_EncryptionInterceptor" name="MD5Encryption" />
+			<interceptor class="group3.henry.login.interceptor.LoggedInInterceptor" name="LoggedIn" />
+			<interceptor-stack name="EncPwLog">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="LoggedIn" />
+				<interceptor-ref name="AESEncryption" />
+				<interceptor-ref name="MD5Encryption" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="EncPwLog" />
+		<action name="login" class="group3.henry.login.controller.LoginAction">
+			<result name="success">/login/success.jsp</result>
+			<result name="verifyEmail">/login/verify.jsp</result>
+			<result name="login">/login/login.jsp</result>
+		</action>
+	</package>
+
+	<!-- ********************** -->
+	<!-- Register/reset package: -->
+	<!-- Intercepts password and encrypts them -->
+	<!-- ********************** -->
+	<package name="logRegPackage" namespace="/logreg" extends="struts-default">
+
+		<interceptors>
+			<interceptor class="group3.henry.encryption.interceptor.AES_EncryptionInterceptor" name="AESEncryption" />
+			<interceptor class="group3.henry.encryption.interceptor.MD5_EncryptionInterceptor" name="MD5Encryption" />
+			<interceptor-stack name="EncPw">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="AESEncryption" />
+				<interceptor-ref name="MD5Encryption" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="EncPw" />
+
+<!-- 		<action name="login" class="group3.henry.login.controller.LoginAction"> -->
+<!-- 			<result name="success">/login/success.jsp</result> -->
+<!-- 			<result name="verifyEmail">/login/verify.jsp</result> -->
+<!-- 			<result name="login">/login/login.jsp</result> -->
+<!-- 		</action> -->
+
+		<action name="register" class="group3.henry.register.controller.RegisterAction">
+			<interceptor-ref name="fileUpload">                        						<!-- 設定檔案上傳攔截器 -->
+				<param name="maximumSize">2000000</param>              						<!-- 限制上傳單個檔案的大小，以byte為單位 -->
+				<param name="allowedTypes">image/gif,image/jpeg,image/png</param>			<!-- 限制上傳檔案的檔案型態，以逗號(,)隔開 -->
+				<param name="allowedExtensions">.gif,.jpg,.jpeg,.png</param>      			<!-- 限制上傳檔案的延伸檔名，以逗號(,)隔開 -->
+			</interceptor-ref>																<!-- 如以上兩者皆設限制的話，則必需兩者皆允許的才能上傳， 而檔案型態則會優先做錯誤提示 -->
+			<interceptor-ref name="EncPw" />                     							<!-- 指定預設攔截器堆疊 -->
+			<param name="saveDirectory">\user_photo</param>									<!-- 自訂上傳的目地目錄 -->
+			<result name="success">/register/regsuccess.jsp</result>
+			<result name="input">/register/register.jsp</result>
+		</action>
+
+		<action name="reset" class="group3.henry.login.controller.ResetPassAction">
+			<result name="success">/login/verify.jsp</result>
+			<result name="input">/login/resetpw.jsp</result>
+		</action>
+	</package>
+	<!-- ************************* -->
+	<!-- Access controlled package -->
+	<!-- ************************* -->
+	<package name="empPackage" namespace="/member" extends="struts-default">
+		<interceptors>
+			<interceptor
+				class="group3.henry.login.interceptor.AuthenticationInterceptor"
+				name="authentication" />
+			<!-- <interceptor class="group3.henry.encryption.interceptor.AES_EncryptionInterceptor" 
+				name="AESEncryption" /> -->
+			<!-- <interceptor class="group3.henry.encryption.interceptor.MD5_EncryptionInterceptor" 
+				name="MD5Encryption" /> -->
+			<interceptor-stack name="AuthenticationRequired">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authentication" />
+				<!-- <interceptor-ref name="AESEncryption" /> -->
+				<!-- <interceptor-ref name="MD5Encryption" /> -->
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="AuthenticationRequired" />
+
+		<global-results>
+			<result name="login">/login/login.jsp</result>
+		</global-results>
+
+		<action name="editprofile" class="group3.henry.login.controller.EditProfileAction">
+			<result>/login/editprofile.jsp</result>
+		</action>
+
+		<action name="updateprofile" class="group3.henry.login.controller.EditProfileAction"
+			method="update">
+			<result>/login/editprofile.jsp</result>
+			<result name="updated">/login/verify.jsp</result>
+			<result name="input">/login/editprofile.jsp</result>
+		</action>
+
+		<action name="changepw" class="group3.henry.login.controller.MemberPageAction2">
+			<result>/member/memberonly2.jsp</result>
+			<result name="input">/member/memberonly2.jsp</result>
+		</action>
+
+		<action name="logout" class="group3.henry.login.controller.LogoutAction">
+			<result>/login/verify.jsp</result>
+			<result name="input">/login/login.jsp</result>
+		</action>
+
+		<action name="*">
+			<result>/member/{1}.jsp</result>
+		</action>
+	</package>
+
+	<!-- ************************* -->
+	<!-- 預約系統 -->
+	<!-- ************************* -->
+	<package name="appPackage" namespace="/apps" extends="struts-default">
+		<interceptors>
+			<interceptor
+				class="group3.henry.login.interceptor.AuthenticationInterceptor"
+				name="authentication" />
+			<!-- <interceptor class="group3.henry.encryption.interceptor.AES_EncryptionInterceptor" 
+				name="AESEncryption" /> -->
+			<!-- <interceptor class="group3.henry.encryption.interceptor.MD5_EncryptionInterceptor" 
+				name="MD5Encryption" /> -->
+			<interceptor-stack name="AuthenticationRequired">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authentication" />
+				<!-- <interceptor-ref name="AESEncryption" /> -->
+				<!-- <interceptor-ref name="MD5Encryption" /> -->
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="AuthenticationRequired" />
+
+		<global-results>
+			<result name="login">/login/login.jsp</result>
+		</global-results>
+
+		<action name="showtime" class="group3.carrie.app.controller.TimeAction">
+			<result name="success">/app/sel_time.jsp</result>
+			<result name="error">/app/sel_errorpage.jsp</result>
+		</action>
+
+		<action name="showsche"
+			class="group3.carrie.schedule.controller.QueryScheduleAction">
+			<result name="success">/app/sel_doc.jsp</result>
+		</action>
+
+		<action name="addapp" class="group3.carrie.app.controller.AddAppAction">
+			<result name="success">/app/fin_app.jsp</result>
+			<result name="input">/app/add_app.jsp</result>
+			<result name="appfail">/app/add_app.jsp</result>
+			<result name="failure">/login/login.jsp</result>
+
+		</action>
+
+		<action name="querybefore" class="group3.carrie.app.controller.QueryAppAction"
+			method="before"></action>
+		<action name="queryafter" class="group3.carrie.app.controller.QueryAppAction"
+			method="after"></action>
+		<action name="cancelapp" class="group3.carrie.app.controller.QueryAppAction"
+			method="cancel"></action>
+
+	</package>
+
+	<!-- ************************* -->
+	<!-- 購物系統 -->
+	<!-- ************************* -->
+	<package name="shoppingPackage" namespace="/shoppings" extends="struts-default">
+		<interceptors>
+			<interceptor
+				class="group3.henry.login.interceptor.AuthenticationInterceptor"
+				name="authentication" />
+			<!-- <interceptor class="group3.henry.encryption.interceptor.AES_EncryptionInterceptor" 
+				name="AESEncryption" /> -->
+			<!-- <interceptor class="group3.henry.encryption.interceptor.MD5_EncryptionInterceptor" 
+				name="MD5Encryption" /> -->
+			<interceptor-stack name="AuthenticationRequired">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authentication" />
+				<!-- <interceptor-ref name="AESEncryption" /> -->
+				<!-- <interceptor-ref name="MD5Encryption" /> -->
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="AuthenticationRequired" />
+
+		<global-results>
+			<result name="login">/login/login.jsp</result>
+		</global-results>
+
+		<action name="showorder" class="group3.carrie.orders.controller.OrdersAction">
+			<result name="success">/shopping/query_shopping.jsp</result>
+			<result name="nomb">/login/login.jsp</result>
+		</action>
+
+		<action name="showorderbyname"
+			class="group3.carrie.orders.controller.QueryOrdersByPNameAction">
+			<result name="success">/shopping/query_shopping_byname.jsp</result>
+			<result name="nomb">/login/login.jsp</result>
+			<result name="noname" type="redirectAction">showorder</result>
+		</action>
+
+		<action name="cancelorder"
+			class="group3.carrie.orders.controller.CancelOrderAction">
+			<result name="nomb">/login/login.jsp</result>
+			<result name="noorder" type="redirectAction">showorder</result>
+		</action>
+
+		<action name="checkfordata" class="group3.carrie.shopping.controller.CheckAction"
+			method="checkfordataconfirm">
+			<result name="nocart">/shopping/prod_list.jsp</result>
+			<result name="success">/shopping/data_confirm.jsp</result>
+		</action>
+
+		<action name="checkforpay" class="group3.carrie.shopping.controller.CheckAction"
+			method="checkforpay">
+			<result name="nomb">/login/login.jsp</result>
+			<result name="cantpay">/index.jsp</result>
+			<result name="input">/index.jsp</result>
+			<result name="success">/shopping/pay.jsp</result>
+		</action>
+
+		<action name="neworder" class="group3.carrie.orders.controller.NewOrderAction"
+			method="ok">
+			<result name="nomb">/login/login.jsp</result>
+			<result name="nocart">/shopping/prod_list.jsp</result>
+		</action>
+
+		<action name="killorder" class="group3.carrie.orders.controller.NewOrderAction"
+			method="cancel">
+			<result name="nomb">/login/login.jsp</result>
+			<result name="nocart">/shopping/prod_list.jsp</result>
+		</action>
+
+		<action name="finpay" class="group3.carrie.shopping.controller.FinPayAction">
+			<result name="success">/shopping/fin_shopping.jsp</result>
+			<result name="nomb">/login/login.jsp</result>
+			<result name="failure">/index.jsp</result>
+		</action>
+
+	</package>
+
+	<!-- ***************************** -->
+	<!-- Non-Access controlled package -->
+	<!-- ***************************** -->
+	<package name="NoLogin" namespace="/free" extends="struts-default">
+		<action name="public" class="group3.henry.login.controller.PublicPageAction">
+			<result>/public/publicpage.jsp</result>
+		</action>
+		<action name="verify" class="group3.henry.email.controller.EmailVerifyAction">
+			<result>/login/verify.jsp</result>
+			<result name="failure">/login/verify.jsp</result>
+		</action>
+		<action name="recover" class="group3.henry.login.controller.RecoverAction">
+			<result name="success">/login/verify.jsp</result>
+			<result name="resetform">/login/resetpw.jsp</result>
+			<result name="failure">/login/verify.jsp</result>
+		</action>
+
+		<action name="queryprodbycata" class="group3.carrie.catagory.controller.CatagoryAction"></action>
+		<action name="queryprodbyname"
+			class="group3.carrie.product.controller.ProductSearchAction" method="getByName"></action>
+		<action name="queryprodbyid"
+			class="group3.carrie.product.controller.ProductSearchAction" method="getById"></action>
+		<action name="getprodpic" class="group3.carrie.product.controller.GetPicAction"></action>
+
+		<action name="showprod"
+			class="group3.carrie.product.controller.ShowProductAction">
+			<result name="success">/shopping/show_prod.jsp</result>
+			<result name="input">/shopping/prod_list.jsp</result>
+			<result name="noprod">/shopping/prod_list.jsp</result>
+		</action>
+
+		<action name="showdoctor" class="group3.beef.employee.controller.ShowDoctorAction">
+			<result name="success">/doctor/querydoctor.jsp</result>
+			<result name="input">/index.jsp</result>
+			<result name="nodoctor">/index.jsp</result>
+		</action>
+
+		<action name="updateOIProd"
+			class="group3.carrie.shopping.controller.ShoppingListAction" method="updateOIProd">
+			<result name="success">/shopping/shopping_list.jsp</result>
+			<result name="nocart">/shopping/prod_list.jsp</result>
+		</action>
+
+		<action name="deleteOIProd"
+			class="group3.carrie.shopping.controller.ShoppingListAction" method="deleteOIProd">
+			<result name="success">/shopping/shopping_list.jsp</result>
+			<result name="nocart">/shopping/prod_list.jsp</result>
+		</action>
+
+		<action name="abanShopping"
+			class="group3.carrie.shopping.controller.ShoppingListAction" method="abanShopping">
+			<result name="success">/shopping/prod_list.jsp</result>
+		</action>
+
+		<action name="jointocart" class="group3.carrie.shopping.controller.BuyProdAction">
+			<result name="error">/shopping/prod_list.jsp</result>
+		</action>
+	</package>
+
+	<!-- ****************************** -->
+	<!-- Employee(?) package -->
+	<!-- ****************************** -->
+
+
+	<!-- k -->
+	<!-- <package name="product" namespace="/addproduct" extends="struts-default"> -->
+	<!-- <action name="addproduct" class="group3.carrie.product.controller.ProductServlet"> -->
+	<!-- <result name="success">/Backstage_Old/success.jsp</result> -->
+	<!-- <result name="add">/Backstage_Old/addproduct.jsp</result> -->
+	<!-- </action> -->
+	<!-- </package> -->
+	<!-- k -->
+
+	<!-- beef -->
+	<!-- <package name="Emp" namespace="/emp" extends="struts-default"> -->
+	<!-- <action name="AddActionEmp" class="group3.beef.employee.controller.EmpAction"> -->
+	<!-- <result name="input">/emp/AddEMP.jsp</result> -->
+	<!-- <result name="success">/emp/AddSucces.jsp</result> -->
+	<!-- </action> -->
+
+	<!-- <action name="getOne_Emp_Update" class="group3.beef.employee.controller.EmpnoAction"> -->
+	<!-- <result name="success">/emp/update_emp_input.jsp</result> -->
+	<!-- </action> -->
+	<!-- </package> -->
+	<!-- beef -->
+
+
+</struts>

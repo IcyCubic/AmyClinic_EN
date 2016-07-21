@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'layout';
+    src:url('../fonts/layout.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'cart';
+    src: url('../fonts/cart.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.cbp-vm-add {
+    color: #fff;
+    background: #47a3da;
+    padding: 10px 20px;
+    border-radius: 2px;
+    margin: 20px 0 0;
+    display: inline-block;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.cbp-vm-add:hover {
+    color: #fff;
+    background: #02639d;
+}
+
+.cbp-vm-add::before {
+    margin-right: 5px;
+}
+
+.cbp-vm-icon::before {
+    font-family: 'layout';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.cbp-vm-add::before {
+    font-family:cart;
+    margin-right: 10px;
+    content: "\e000";
+}
