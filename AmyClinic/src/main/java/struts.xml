@@ -49,9 +49,9 @@
         </interceptors>
         <default-interceptor-ref name="EncPw" />
         <action name="login" class="group3.henry.login.controller.LoginAction" method="login">
-            <result name="success">/index.jsp</result>
-            <result name="verifyEmail">/login/verify.jsp</result>
-            <result name="login">/login/login.jsp</result>
+            <result name="success">/web/index.jsp</result>
+            <result name="verifyEmail">/web/verify.jsp</result>
+            <result name="login">/web/login.jsp</result>
         </action>
         <action name="register" class="group3.henry.register.controller.RegisterAction" method="register">
             <interceptor-ref name="fileUpload">                                                <!-- �]�w�ɮפW���d�I�� -->
@@ -62,11 +62,11 @@
             <interceptor-ref name="EncPw" />                                                 <!-- ���w�w�]�d�I�����| -->
             <param name="saveDirectory">\user_photo</param>                                    <!-- �ۭq�W�Ǫ��ئa�ؿ� -->
             <result name="success">/register/regsuccess.jsp</result>
-            <result name="input">/register/register.jsp</result>
+            <result name="input">/web/register.jsp</result>
         </action>
         <action name="reset" class="group3.henry.login.controller.ResetPassAction" method="resetPass">
-            <result name="success">/login/verify.jsp</result>
-            <result name="input">/login/resetpw.jsp</result>
+            <result name="success">/web/verify.jsp</result>
+            <result name="input">/web/resetpw.jsp</result>
         </action>
     </package>
     <!-- ************************* -->

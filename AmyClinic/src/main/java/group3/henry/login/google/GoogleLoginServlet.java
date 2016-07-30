@@ -94,7 +94,7 @@ public class GoogleLoginServlet extends HttpServlet {
 		            session.removeAttribute("location");
 		            redirect = location;
 		        } else {
-		        	redirect = getServletContext().getContextPath() +"/index.jsp";
+		        	redirect = getServletContext().getContextPath() +"/web/index.jsp";
 		        }
 				System.out.println("Google Login servlet redirect URL: "+redirect);
 								
