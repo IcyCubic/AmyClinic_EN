@@ -16,7 +16,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-public class AES_EncryptionInterceptor extends AbstractInterceptor {
+public class AES_EncryptionIntercepter extends AbstractInterceptor {
 	private static final long serialVersionUID = 1L;
 	private static final String KEY = "thisismygroupthr";
 								      
@@ -50,14 +50,14 @@ public class AES_EncryptionInterceptor extends AbstractInterceptor {
 		String pw = null; // container for password
 		String pw2 = null; // container for repeat password field, if one exists
 		
-		if (request.getAttribute("encpw")!=null) // if a previous interceptor processed a pw, use encpw
+		if (request.getAttribute("encpw")!=null) // if a previous intercepter processed a pw, use encpw
 			pw = (String)request.getAttribute("encpw");
 		else if (request.getParameter("memberVO.pwd")!=null)
 			pw = request.getParameter("memberVO.pwd"); // if not, use pw from request
 		else
-			return invocation.invoke(); // No raw or encrypted password(s) to process, moves to next interceptor
+			return invocation.invoke(); // No raw or encrypted password(s) to process, moves to next intercepter
 		
-		if (request.getAttribute("encpw2")!=null) // if a prev interceptor processed the alt pw, use encpw2
+		if (request.getAttribute("encpw2")!=null) // if a prev intercepter processed the alt pw, use encpw2
 			pw2 = (String)request.getAttribute("encpw2");
 		else
 			pw2 = request.getParameter("tempPW");	// if not, use tempPW from request
@@ -73,7 +73,7 @@ public class AES_EncryptionInterceptor extends AbstractInterceptor {
 	}
 //	test method
 	public static void main(String[] args){
-		AES_EncryptionInterceptor x = new AES_EncryptionInterceptor();
+		AES_EncryptionIntercepter x = new AES_EncryptionIntercepter();
 		String testmsg = "Hello World";
 		System.out.println(x.encrypt(testmsg)); //MS1O+SSkUT7apEu6Mik/yA==
 	}

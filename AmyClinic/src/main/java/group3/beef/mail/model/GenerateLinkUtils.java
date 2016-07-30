@@ -3,11 +3,7 @@ package group3.beef.mail.model;
 
 import java.util.Base64;
 
-import com.sun.mail.util.BASE64EncoderStream;
-
 import group3.beef.employee.model.EmployeeVO;
-import group3.beef.encryption.AES_Encryption;
-import group3.henry.encryption.interceptor.MD5_EncryptionInterceptor;
 
 public class GenerateLinkUtils {
 	 private static final String CHECK_CODE = "checkCode";  
