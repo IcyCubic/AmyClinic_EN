@@ -90,7 +90,7 @@
         </interceptors>
         <default-interceptor-ref name="AuthenticationRequired" />
         <global-results>
-            <result name="login">/login/login.jsp</result>
+            <result name="login">/web/login.jsp</result>
         </global-results>
         <action name="editprofile" class="group3.henry.login.controller.EditProfileAction">
             <result>/member/member.jsp</result>
@@ -98,7 +98,7 @@
         <action name="updateprofile" class="group3.henry.login.controller.EditProfileAction"
             method="update">
             <result>/member/member.jsp</result>
-            <result name="updated">/login/verify.jsp</result>
+            <result name="updated">/web/verify.jsp</result>
             <result name="input">/member/member.jsp</result>
         </action>
                <action name="updatephotos" class="group3.henry.login.controller.EditProfileAction" method="updatePhoto">
@@ -118,7 +118,7 @@
 <!--         </action> -->
         <action name="logout" class="group3.henry.login.controller.LogoutAction">
             <result>/index.jsp</result>
-            <result name="input">/login/login.jsp</result>
+            <result name="input">/web/login.jsp</result>
         </action>
         <action name="*">
             <result>/member/{1}.jsp</result>
@@ -190,21 +190,21 @@
         </interceptors>
         <default-interceptor-ref name="AuthenticationRequired" />
         <global-results>
-            <result name="login">/login/login.jsp</result>
+            <result name="login">/web/login.jsp</result>
         </global-results>
         <action name="showorder" class="group3.carrie.orders.controller.OrdersAction">
             <result name="success">/shopping/query_shopping.jsp</result>
-            <result name="nomb">/login/login.jsp</result>
+            <result name="nomb">/web/login.jsp</result>
         </action>
         <action name="showorderbyname"
             class="group3.carrie.orders.controller.QueryOrdersByPNameAction">
             <result name="success">/shopping/query_shopping_byname.jsp</result>
-            <result name="nomb">/login/login.jsp</result>
+            <result name="nomb">/web/login.jsp</result>
             <result name="noname" type="redirectAction">showorder</result>
         </action>
         <action name="cancelorder"
             class="group3.carrie.orders.controller.CancelOrderAction">
-            <result name="nomb">/login/login.jsp</result>
+            <result name="nomb">/web/login.jsp</result>
             <result name="noorder" type="redirectAction">showorder</result>
         </action>
         <action name="checkfordata" class="group3.carrie.shopping.controller.CheckAction"
@@ -214,25 +214,25 @@
         </action>
         <action name="checkforpay" class="group3.carrie.shopping.controller.CheckAction"
             method="checkforpay">
-            <result name="nomb">/login/login.jsp</result>
-            <result name="cantpay">/index.jsp</result>
-            <result name="input">/index.jsp</result>
+            <result name="nomb">/web/login.jsp</result>
+            <result name="cantpay">/web/index.jsp</result>
+            <result name="input">/web/index.jsp</result>
             <result name="success">/shopping/pay.jsp</result>
         </action>
         <action name="neworder" class="group3.carrie.orders.controller.NewOrderAction"
             method="ok">
-            <result name="nomb">/login/login.jsp</result>
+            <result name="nomb">/web/login.jsp</result>
             <result name="nocart">/shopping/prod_list.jsp</result>
         </action>
         <action name="killorder" class="group3.carrie.orders.controller.NewOrderAction"
             method="cancel">
-            <result name="nomb">/login/login.jsp</result>
+            <result name="nomb">/web/login.jsp</result>
             <result name="nocart">/shopping/prod_list.jsp</result>
         </action>
         <action name="finpay" class="group3.carrie.shopping.controller.FinPayAction">
             <result name="success">/shopping/fin_shopping.jsp</result>
-            <result name="nomb">/login/login.jsp</result>
-            <result name="failure">/index.jsp</result>
+            <result name="nomb">/web/login.jsp</result>
+            <result name="failure">/web/index.jsp</result>
             <result name="error">/shopping/error_fin_shopping.jsp</result>
         </action>
     </package>
@@ -272,15 +272,15 @@
             <result>/public/publicpage.jsp</result>
         </action>
         <action name="verify" class="group3.henry.email.controller.EmailVerifyAction">
-            <result>/login/verify.jsp</result>
-            <result name="failure">/login/verify.jsp</result>
+            <result>/web/verify.jsp</result>
+            <result name="failure">/web/verify.jsp</result>
         </action>
         <action name="recoverini" class="group3.henry.login.controller.RecoverAction" method="recover">
-            <result name="success">/login/verify.jsp</result>
+            <result name="success">/web/verify.jsp</result>
         </action>
         <action name="recover" class="group3.henry.login.controller.RecoverAction">
-            <result name="resetform">/login/resetpw.jsp</result>
-            <result name="failure">/login/verify.jsp</result>
+            <result name="resetform">/web/resetpw.jsp</result>
+            <result name="failure">/web/verify.jsp</result>
         </action>
         <action name="queryprodbycata" class="group3.carrie.catagory.controller.CatagoryAction"></action>
         <action name="queryprodbyname"
