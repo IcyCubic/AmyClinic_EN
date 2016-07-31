@@ -16,7 +16,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-public class AES_EncryptionIntercepter extends AbstractInterceptor {
+public class AES_EncryptionInterceptor extends AbstractInterceptor {
 	private static final long serialVersionUID = 1L;
 	private static final String KEY = "thisismygroupthr";
 								      
@@ -73,7 +73,7 @@ public class AES_EncryptionIntercepter extends AbstractInterceptor {
 	}
 //	test method
 	public static void main(String[] args){
-		AES_EncryptionIntercepter x = new AES_EncryptionIntercepter();
+		AES_EncryptionInterceptor x = new AES_EncryptionInterceptor();
 		String testmsg = "Hello World";
 		System.out.println(x.encrypt(testmsg)); //MS1O+SSkUT7apEu6Mik/yA==
 	}

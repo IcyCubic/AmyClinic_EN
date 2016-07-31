@@ -21,7 +21,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-public class MD5_EncryptionIntercepter extends AbstractInterceptor {
+public class MD5_EncryptionInterceptor extends AbstractInterceptor {
 	private static final long serialVersionUID = 1L;
 	
 	//one-way-hash method
@@ -108,7 +108,7 @@ public class MD5_EncryptionIntercepter extends AbstractInterceptor {
 	
 //	test method
 	public static void main(String[] args){
-		MD5_EncryptionIntercepter x = new MD5_EncryptionIntercepter();
+		MD5_EncryptionInterceptor x = new MD5_EncryptionInterceptor();
 		String testmsg = "Hello World";
 		System.out.println(x.encode(testmsg)); //b10a8db164e0754105b7a99be72e3fe5
 	}
