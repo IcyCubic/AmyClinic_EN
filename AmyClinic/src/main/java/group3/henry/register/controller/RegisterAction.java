@@ -2,7 +2,6 @@ package group3.henry.register.controller;
 
 
 import java.io.File;
-import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 
