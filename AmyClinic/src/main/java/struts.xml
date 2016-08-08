@@ -93,7 +93,9 @@
             <result name="login">/web/login.jsp</result>
         </global-results>
         <action name="editprofile" class="group3.henry.login.controller.EditProfileAction">
-            <result>/member/member.jsp</result>
+<!-- 			Should make a member landing page like this one-->
+<!--             <result>/member/member.jsp</result> -->
+            <result>/web/editprofile.jsp</result>
         </action>
         <action name="updateprofile" class="group3.henry.login.controller.EditProfileAction"
             method="update">
