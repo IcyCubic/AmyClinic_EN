@@ -134,7 +134,7 @@ public class RegisterAction extends ActionSupport implements GlobalConstants{
 			m.send(memberVO.getName(), memberVO.getEmail(), HEADER, compose(token, memberVO.getEmail()));
 			
 			register.addMember(memberVO); // inserts newly registered member
-			
+			this.setMessage("Registeration Success! Please verify your email address!");
 			return SUCCESS;	
 		}
 		

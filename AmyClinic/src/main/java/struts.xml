@@ -61,7 +61,7 @@
             </interceptor-ref>                                                                <!-- �p�H�W���̬ҳ]����ܡA�h���ݨ��̬Ҥ��\���~���W�ǡA ���ɮ׫��A�h�|�u�������~���� -->
             <interceptor-ref name="EncPw" />                                                 <!-- ���w�w�]�d�I�����| -->
             <param name="saveDirectory">\user_photo</param>                                    <!-- �ۭq�W�Ǫ��ئa�ؿ� -->
-            <result name="success">/register/regsuccess.jsp</result>
+            <result name="success">/web/verify.jsp</result>
             <result name="input">/web/register.jsp</result>
         </action>
         <action name="reset" class="group3.henry.login.controller.ResetPassAction" method="resetPass">
