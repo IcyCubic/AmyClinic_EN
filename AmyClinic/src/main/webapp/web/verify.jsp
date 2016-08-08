@@ -50,7 +50,7 @@
 	</script>
 	<script>
 	  setTimeout(function() {
-	      document.location = "${pageContext.request.contextPath}/index.jsp";
+	      document.location = "${pageContext.request.contextPath}/web/index.jsp";
 	  }, 5000); // delay in milliseconds
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
