@@ -153,7 +153,7 @@
 function PreviewImage(imgFile) {
 
 	var pattern = /(\.*.jpg$)|(\.*.png$)|(\.*.jpeg$)|(\.*.gif$)|(\.*.bmp$)/;
-	if (!pattern.test(imgFile.value)) {
+	if (!pattern.test(imgFile.value.toLowerCase())) {
 		alert("Invalid Format");
 		imgFile.focus();
 	} else {
